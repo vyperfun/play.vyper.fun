@@ -19,7 +19,7 @@ import {
   CardBody,
   Button,
 } from "shards-react";
-
+import { TwitterShareButton } from "react-twitter-embed";
 import { pokemonIndex } from "../constants";
 
 import Fire from "../../assets/flame.png";
@@ -42,7 +42,7 @@ import Ground from "../../assets/ground.png";
 import Loading from "../../assets/loading.gif";
 
 function Battle(props) {
-  const { user, battleResult, loading, sendToLoginPage } = props;
+  const { user, battleResult, battleHash, loading, sendToLoginPage } = props;
   const history = useHistory();
 
   const typeToIcon = {
@@ -67,6 +67,13 @@ function Battle(props) {
 
   if (!user) {
     sendToLoginPage({ history });
+  } else if (battleResult) {
+    console.log(
+      generateLink({
+        ...battleResult,
+        ...user,
+      })
+    );
   }
 
   return (
@@ -83,6 +90,16 @@ function Battle(props) {
           <br />
           <h1>Battle Result</h1>
           <br />
+          <h5>Tweet Your Pokémon Battle</h5>
+          <br />
+          <TwitterShareButton
+            url={`https://play.vyper.fun/result?t=${battleResult.trainerPokemonName}&o=${battleResult.wildPokemonName}&thp=${battleResult.trainerPokemonHP}&ohp=${battleResult.wildPokemonHP}&a=${user.address}`}
+            options={{
+              text: `I Just Battled with ${battleResult.wildPokemonName} ⚔️ in a game built using @vyperlang`,
+              via: "VyperFun",
+              size: "large",
+            }}
+          />
           <br />
           {battleResult.battleResult ? (
             <h4>YOU WIN 🔥</h4>
@@ -160,9 +177,14 @@ function Battle(props) {
   );
 }
 
+const generateLink = (data) => {
+  return `https://play.vyper.fun/result?t=${data.trainerPokemonName}&o=${data.wildPokemonName}&thp=${data.trainerPokemonHP}&ohp=${data.wildPokemonHP}&a=${data.address}`;
+};
+
 const mapStateToProps = (state) => ({
   user: state.app.user,
   battleResult: state.app.battleResult,
+  battleHash: state.app.battleHash,
   loading: state.app.loading,
 });
 

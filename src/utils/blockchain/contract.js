@@ -44,7 +44,7 @@ const POKEMON_TRAINER_ABI = [
     ],
     stateMutability: "nonpayable",
     type: "function",
-    gas: 469421,
+    gas: 467363,
   },
   {
     name: "listTrainerPokemon",
@@ -124,8 +124,8 @@ const POKEMON_BATTLE_ABI = [
   },
 ];
 
-const POKEMON_TRAINER_ADDRESS = "0x35b93689608340ef0fb79d3e29321a2a9ea8f389";
-const POKEMON_BATTLE_ADDRESS = "0x023747A12EaC6d3C46fbc59920977ac016F970eb";
+const POKEMON_TRAINER_ADDRESS = "0x663cA8C20Edfe469fD0E8785e202b8db07FB019C";
+const POKEMON_BATTLE_ADDRESS = "0xcBCB471168893317055be87eADc0f08A4Abb49ee";
 
 module.exports = {
   POKEMON_TRAINER_ABI,

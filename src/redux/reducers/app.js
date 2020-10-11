@@ -30,7 +30,11 @@ export default (state = initialState, action) => {
     case types.LOADING:
       return { ...state, loading: true };
     case types.BATTLE:
-      return { ...state, battleResult: action.payload, loading: false };
+      return {
+        ...state,
+        battleResult: action.payload,
+        loading: false,
+      };
     default:
       return state;
   }

@@ -60,7 +60,7 @@ function PickAPokemon(props) {
         <Fragment>
           <img src={Loading} />
           <br />
-          <h4>Adding Your New Pokemon...</h4>
+          <h4>Adding Your New Pokémon...</h4>
         </Fragment>
       ) : (
         <Fragment>

@@ -68,6 +68,14 @@ export const startBattle = (payload) => (dispatch) => {
       type: types.BATTLE,
       payload: battleResult,
     });
+    trainerPokemonCount(payload.address).then((count) => {
+      listTrainerPokemons(payload.address, count).then((pokemons) => {
+        dispatch({
+          type: types.SET_POKEMONS,
+          payload: pokemons,
+        });
+      });
+    });
   });
 };
 
@@ -90,4 +98,21 @@ export const getTrainerPokemons = (payload) => (dispatch) => {
       });
     }
   );
+};
+
+export const listPokemonsByAddress = (payload) => (dispatch) => {
+  dispatch({
+    type: types.LOADING,
+  });
+  trainerPokemonCount(payload.address, payload.contract).then((count) => {
+    listTrainerPokemons(payload.address, count, payload.contract).then(
+      (pokemons) => {
+        console.log(pokemons);
+        dispatch({
+          type: types.SET_POKEMONS,
+          payload: pokemons,
+        });
+      }
+    );
+  });
 };

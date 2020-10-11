@@ -11,7 +11,7 @@ import "react-simple-flex-grid/lib/main.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
 import { Card, CardTitle, CardImg, CardBody, Button } from "shards-react";
-
+import { TwitterShareButton } from "react-twitter-embed";
 import { pokemonIndex } from "../constants";
 
 import Fire from "../../assets/flame.png";
@@ -76,42 +76,60 @@ function MyPokemons(props) {
       <br />
       <br />
       <h1>My Pokémons</h1>
-      <br />
-      <br />
       {loading ? (
         <img src={Loading} />
       ) : (
-        <Row gutter={40}>
-          {pokemons.map((pokemon, index) => (
-            <Col key={index} span={4} xs={12} sm={6} md={6} lg={4} xl={3}>
-              <Card style={{ maxWidth: "300px" }}>
-                <CardImg src={pokemonIndex[pokemon.name].url} />
-                <CardBody>
-                  <CardTitle>{pokemon.name}</CardTitle>
-                  <p>
-                    <h5>HP: {pokemon.HP}</h5>
-                    {pokemonIndex[pokemon.name].types.map((type, index) => {
-                      return <img key={index} src={typeToIcon[type.trim()]} />;
-                    })}
-                  </p>
-                  <Button
-                    onClick={() => {
-                      startBattle({
-                        address: user.address,
-                        pokemonIndex: pokemon.pokemonIndex,
-                        history: history,
-                      });
-                    }}
-                  >
-                    Battle &rarr;
-                  </Button>
-                </CardBody>
-              </Card>
-              <br />
-            </Col>
-          ))}
-        </Row>
+        <Fragment>
+          <br />
+          <h5>Tweet Your Pokémon Collection</h5>
+          <br />
+
+          <TwitterShareButton
+            url={`https://play.vyper.fun/${user.address}`}
+            options={{
+              text: `Check out my Collection of ${pokemonCount} Pokémons in a Game built using @vyperlang`,
+              via: "VyperFun",
+              size: "large",
+            }}
+          />
+          <br />
+          <Row gutter={40}>
+            {pokemons.map((pokemon, index) => (
+              <Col key={index} span={4} xs={12} sm={6} md={6} lg={4} xl={3}>
+                <Card style={{ maxWidth: "300px" }}>
+                  <CardImg src={pokemonIndex[pokemon.name].url} />
+                  <CardBody>
+                    <CardTitle>{pokemon.name}</CardTitle>
+                    <p>
+                      <h5>HP: {pokemon.HP}</h5>
+                      {pokemonIndex[pokemon.name].types.map((type, index) => {
+                        return (
+                          <img key={index} src={typeToIcon[type.trim()]} />
+                        );
+                      })}
+                    </p>
+                    <Button
+                      onClick={() => {
+                        startBattle({
+                          address: user.address,
+                          pokemonIndex: pokemon.pokemonIndex,
+                          history: history,
+                        });
+                      }}
+                    >
+                      Battle &rarr;
+                    </Button>
+                  </CardBody>
+                </Card>
+                <br />
+              </Col>
+            ))}
+          </Row>
+        </Fragment>
       )}
+      <br />
+      <br />
+      <br />
     </Fragment>
   );
 }

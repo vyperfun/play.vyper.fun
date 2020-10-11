@@ -1,3 +1,4 @@
+import { POKEMON_TRAINER_ABI, POKEMON_TRAINER_ADDRESS } from "./contract";
 const ethers = require("ethers");
 const utils = ethers.utils;
 
@@ -44,14 +45,15 @@ export const battle = async (userAddress, pokemonIndex) => {
         trainerPokemonHP: res.trainerPokemonHP,
         wildPokemonHP: res.wildPokemonHP,
         battleResult: res.battleResult,
+        battleHash: logs.transactionHash,
       };
     });
 
   return result;
 };
 
-export const trainerPokemonCount = async (userAddress) => {
-  const pokemonTrainerContract = window.pokemonTrainerContract;
+export const trainerPokemonCount = async (userAddress, contract) => {
+  const pokemonTrainerContract = window.pokemonTrainerContract || contract;
 
   let result;
 
@@ -65,8 +67,12 @@ export const trainerPokemonCount = async (userAddress) => {
   return result;
 };
 
-export const listTrainerPokemons = async (userAddress, pokemonCount) => {
-  const pokemonTrainerContract = window.pokemonTrainerContract;
+export const listTrainerPokemons = async (
+  userAddress,
+  pokemonCount,
+  contract
+) => {
+  const pokemonTrainerContract = window.pokemonTrainerContract || contract;
   var promiseArr = [];
   for (let i = 0; i < pokemonCount; i++) {
     promiseArr.push(
