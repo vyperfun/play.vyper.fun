@@ -1,13 +1,26 @@
 import Onboard from "bnc-onboard";
 import Web3 from "web3";
-var web3;
+import {
+  POKEMON_BATTLE_ABI,
+  POKEMON_TRAINER_ABI,
+  POKEMON_BATTLE_ADDRESS,
+  POKEMON_TRAINER_ADDRESS,
+} from "./contract";
 
 export const onboard = Onboard({
   dappId: "32dedbdd-255e-4e93-a66f-7e558c24893a", // [String] The API key created by step one above
   networkId: 4, // [Integer] The Ethereum network ID your Dapp uses.
   subscriptions: {
     wallet: (wallet) => {
-      web3 = new Web3(wallet.provider);
+      window.web3 = new Web3(wallet.provider);
+      window.pokemonTrainerContract = new window.web3.eth.Contract(
+        POKEMON_TRAINER_ABI,
+        POKEMON_TRAINER_ADDRESS
+      );
+      window.pokemonBattleContract = new window.web3.eth.Contract(
+        POKEMON_BATTLE_ABI,
+        POKEMON_BATTLE_ADDRESS
+      );
     },
   },
   walletSelect: {

@@ -2,9 +2,11 @@ import React from "react";
 import "./App.css";
 import { Provider } from "react-redux";
 import Store from "./redux/store";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./pages/Login";
-import Footer from "./components/Footer";
+import PickAPokemon from "./pages/PickAPokemon";
+import MyPokemons from "./pages/MyPokemons";
+import Battle from "./pages/Battle";
 
 function App() {
   return (
@@ -12,14 +14,20 @@ function App() {
       <Provider store={Store}>
         <Router>
           <Switch>
+            <Route path="/pick-a-pokemon">
+              <PickAPokemon />
+            </Route>
+            <Route path="/my-pokemons">
+              <MyPokemons />
+            </Route>
+            <Route path="/battle">
+              <Battle />
+            </Route>
             <Route path="/">
               <Login />
             </Route>
           </Switch>
         </Router>
-        <div style={{ position: "absolute", bottom: "30px", width: "100%" }}>
-          <Footer />
-        </div>
       </Provider>
     </center>
   );

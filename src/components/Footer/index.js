@@ -7,7 +7,7 @@ import GitHubButton from "react-github-btn";
 export default function Footer() {
   return (
     <div>
-      <h3>Built Using</h3>
+      <h5>Built Using</h5>
       <img src={Blocknative} width="100" />
       &nbsp;&nbsp;&nbsp;
       <img src={Fleek} width="70" />
