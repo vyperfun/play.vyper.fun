@@ -88,7 +88,7 @@ function PickAPokemon(props) {
                         choosePokemon({
                           address: user.address,
                           pokemonName: pokemon.pokemonName,
-                          trainerName: user.address,
+                          trainerName: user.address.substring(2, 33),
                           history: history,
                         });
                       }}
