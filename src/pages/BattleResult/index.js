@@ -77,6 +77,14 @@ function Battle(props) {
       <br />
       <h1>Battle Result</h1>
       <br />
+      <Button
+        onClick={() => {
+          window.location.href = `https://play.vyper.fun/`;
+        }}
+      >
+        Play CryptoPokémons
+      </Button>
+      <br />
       <br />
       {battleResult.battleResult ? (
         <h4>YOU WIN 🔥</h4>

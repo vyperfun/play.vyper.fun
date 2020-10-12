@@ -88,6 +88,14 @@ function MyPokemons(props) {
       <br />
       <h1>My Pokémons</h1>
       <br />
+      <Button
+        onClick={() => {
+          window.location.href = `https://play.vyper.fun/`;
+        }}
+      >
+        Play CryptoPokémons
+      </Button>
+      <br />
       <br />
       {loading ? (
         <img src={Loading} />
