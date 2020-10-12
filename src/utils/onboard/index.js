@@ -28,6 +28,12 @@ export const onboard = Onboard({
       { walletName: "coinbase", preferred: true },
       { walletName: "trust" },
       { walletName: "metamask", preferred: true },
+      {
+        walletName: "portis",
+        apiKey: "7b9fd280-7ebd-4c62-a59f-9f6504906584",
+        preferred: true,
+        label: "Portis",
+      },
       { walletName: "dapper", preferred: true },
       /* {
       walletName: "trezor",
@@ -43,12 +49,6 @@ export const onboard = Onboard({
         walletName: "fortmatic",
         apiKey: "pk_test_27DFAEDF186A9394",
         preferred: true,
-      },
-      {
-        walletName: "portis",
-        apiKey: "110f4f7b-6c23-43e9-afc8-07f3dd8edd2e",
-        preferred: true,
-        label: "Portis",
       },
       {
         walletName: "squarelink",
