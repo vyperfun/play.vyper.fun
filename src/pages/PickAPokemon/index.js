@@ -7,6 +7,7 @@ import { choosePokemon, sendToLoginPage } from "../../redux/actions/app";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
 import { Card, CardTitle, CardImg, CardBody, Button } from "shards-react";
+import BuiltBy from "../../components/BuiltBy";
 import pokemons from "./pokemons";
 import Fire from "../../assets/flame.png";
 import Dark from "../../assets/dark.png";
@@ -103,6 +104,12 @@ function PickAPokemon(props) {
           </Row>
         </Fragment>
       )}
+      <br />
+      <br />
+      <br />
+      <BuiltBy />
+      <br />
+      <br />
     </Fragment>
   );
 }

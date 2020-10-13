@@ -22,6 +22,8 @@ import {
 
 import { pokemonIndex } from "../constants";
 
+import BuiltBy from "../../components/BuiltBy";
+
 import Fire from "../../assets/flame.png";
 import Dark from "../../assets/dark.png";
 import Dragon from "../../assets/dragon.png";
@@ -79,7 +81,7 @@ function Battle(props) {
       <br />
       <Button
         onClick={() => {
-          window.location.href = `https://play.vyper.fun/`;
+          window.open(`https://play.vyper.fun?ref=play`, "_blank");
         }}
       >
         Play CryptoPokémons
@@ -139,12 +141,27 @@ function Battle(props) {
 
       <Button
         onClick={() => {
-          window.location.href = `https://play.vyper.fun/${battleResult.address}`;
+          window.open(
+            `https://play.vyper.fun/${battleResult.address}`,
+            "_blank"
+          );
         }}
       >
         See Trainer's All Pokémons
       </Button>
-
+      <br />
+      <br />
+      <Button
+        onClick={() => {
+          window.open(`https://vyper.fun?ref=play`, "_blank");
+        }}
+      >
+        Learn How You Can Build This Game
+      </Button>
+      <br />
+      <br />
+      <br />
+      <BuiltBy />
       <br />
       <br />
     </Fragment>

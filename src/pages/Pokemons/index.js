@@ -8,6 +8,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
 import { Card, CardTitle, CardImg, CardBody, Button } from "shards-react";
 
+import BuiltBy from "../../components/BuiltBy";
+
 import { pokemonIndex } from "../constants";
 
 import Fire from "../../assets/flame.png";
@@ -90,7 +92,7 @@ function MyPokemons(props) {
       <br />
       <Button
         onClick={() => {
-          window.location.href = `https://play.vyper.fun/`;
+          window.open(`https://play.vyper.fun?ref=play`, "_blank");
         }}
       >
         Play CryptoPokémons
@@ -120,6 +122,20 @@ function MyPokemons(props) {
           ))}
         </Row>
       )}
+      <br />
+      <Button
+        onClick={() => {
+          window.open(`https://vyper.fun?ref=play`, "_blank");
+        }}
+      >
+        Learn How You Can Build This Game
+      </Button>
+      <br />
+      <br />
+      <br />
+      <BuiltBy />
+      <br />
+      <br />
     </Fragment>
   );
 }

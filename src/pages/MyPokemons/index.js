@@ -14,6 +14,8 @@ import { Card, CardTitle, CardImg, CardBody, Button } from "shards-react";
 import { TwitterShareButton } from "react-twitter-embed";
 import { pokemonIndex } from "../constants";
 
+import BuiltBy from "../../components/BuiltBy";
+
 import Fire from "../../assets/flame.png";
 import Dark from "../../assets/dark.png";
 import Dragon from "../../assets/dragon.png";
@@ -128,6 +130,18 @@ function MyPokemons(props) {
         </Fragment>
       )}
       <br />
+      <br />
+      <Button
+        onClick={() => {
+          window.open(`https://vyper.fun?ref=play`, "_blank");
+        }}
+      >
+        Learn How You Can Build This Game
+      </Button>
+      <br />
+      <br />
+      <br />
+      <BuiltBy />
       <br />
       <br />
     </Fragment>
